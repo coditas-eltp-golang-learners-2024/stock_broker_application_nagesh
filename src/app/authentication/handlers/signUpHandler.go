@@ -32,24 +32,10 @@ func SignUp(c *gin.Context) {
 		return
 	}
 
-	if err := service.SignUp(&userInput); err != nil {
+	if err := service.SignUpService(&userInput); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
 	c.JSON(http.StatusCreated, gin.H{"message": "Customer signed up successfully"})
 }
-
-// func GetAlbumByID(c *gin.Context) {
-// 	id := c.Param("id")
-
-// 	// Loop through the list of albums, looking for
-// 	// an album whose ID value matches the parameter.
-// 	for _, a := range albums {
-// 		if a.ID == id {
-// 			c.IndentedJSON(http.StatusOK, a)
-// 			return
-// 		}
-// 	}
-// 	c.IndentedJSON(http.StatusNotFound, gin.H{"message": "album not found"})
-// }

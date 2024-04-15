@@ -11,6 +11,7 @@ func SetupRouter() *gin.Engine {
 	router := gin.Default()
 
 	router.POST(constants.SignUp, handlers.SignUp)
+	router.POST(constants.SignIn, handlers.SignIn)
 
 	return router
 

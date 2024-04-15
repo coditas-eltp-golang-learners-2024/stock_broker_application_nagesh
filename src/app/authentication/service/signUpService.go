@@ -6,7 +6,7 @@ import (
 	"Stock_broker_application/src/app/authentication/repo"
 )
 
-func SignUp(user *models.User) error {
+func SignUpService(user *models.User) error {
 
 	result, err := repo.CheckUserExists(user)
 	if err != nil {
