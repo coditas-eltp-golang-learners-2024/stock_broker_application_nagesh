@@ -18,6 +18,17 @@ func init() {
 	validate = validator.New()
 }
 
+// @Summary Sign up a new user
+// @Description Sign up a new user in the system
+// @Tags authentication
+// @Accept json
+// @Produce json
+// @Param userInput body models.User true "User data to sign up"
+// @Success 201 {object} gin.H{"message": "Customer signed up successfully"}
+// @Failure 400 {object} gin.H{"error": "Bad Request", "details": "Validation failed"}
+// @Failure 500 {object} gin.H{"error": "Internal Server Error", "details": "Failed to sign up user"}
+// @Router /signup [post]
+
 func SignUp(c *gin.Context) {
 
 	var userInput models.User

@@ -1,6 +1,7 @@
 package constants
 
 const (
-	SignUp = "/signup"
-	SignIn = "/signin"
+	SignUp         = "/signup"
+	SignIn         = "/signin"
+	ChangePassword = "/changepassword"
 )

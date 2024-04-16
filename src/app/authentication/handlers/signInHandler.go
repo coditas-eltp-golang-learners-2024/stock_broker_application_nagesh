@@ -16,6 +16,18 @@ func init() {
 	validate = validator.New()
 }
 
+func authMiddleware(c *gin.Context) {
+	// Check authentication
+	// Example: Check for Authorization header and validate token
+	token := c.GetHeader("Authorization")
+	if token == "" {
+		c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
+		return
+	}
+	// Continue to next handler if authenticated
+	c.Next()
+}
+
 // @Summary Sign in user
 // @Description Sign in user with email and password
 // @Tags Authentication
@@ -40,10 +52,11 @@ func SignIn(c *gin.Context) {
 		return
 	}
 
-	if err := service.SignInService(&userInput); err != nil {
+	token, err := service.SignInService(&userInput)
+	if err != nil {
 		c.JSON(http.StatusBadGateway, gin.H{"error": constants.ErrEmailOrPasswordVerificationFailed, "validation_errors": err.Error()})
-
+		return
 	}
-	c.JSON(http.StatusOK, gin.H{"message": "Email and Password verified"})
+	c.JSON(http.StatusOK, gin.H{"Token": token})
 
 }
