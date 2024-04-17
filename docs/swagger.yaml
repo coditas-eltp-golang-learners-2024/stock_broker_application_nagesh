@@ -1,0 +1,107 @@
+basePath: /
+definitions:
+  models.User:
+    properties:
+      email:
+        type: string
+      name:
+        type: string
+      pan_card_number:
+        type: string
+      password:
+        minLength: 5
+        type: string
+      phone_number:
+        type: integer
+    required:
+    - email
+    - name
+    - pan_card_number
+    - password
+    - phone_number
+    type: object
+  models.UserSignIn:
+    properties:
+      email:
+        type: string
+      password:
+        minLength: 5
+        type: string
+    required:
+    - email
+    - password
+    type: object
+  models.ValidateOtp:
+    properties:
+      email:
+        type: string
+      otp:
+        type: integer
+      otp_exp:
+        type: string
+    required:
+    - email
+    - otp
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: This is a sample API for demonstration purposes.
+  title: Your API Title
+  version: "1.0"
+paths:
+  /signin:
+    post:
+      consumes:
+      - application/json
+      description: Sign in to the system with user credentials
+      parameters:
+      - description: User credentials for signing in
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/models.UserSignIn'
+      produces:
+      - application/json
+      responses: {}
+      summary: Sign in to the system
+      tags:
+      - Authentication
+  /signup:
+    post:
+      consumes:
+      - application/json
+      description: Sign up a new user in the system
+      parameters:
+      - description: User data to sign up
+        in: body
+        name: userInput
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
+      produces:
+      - application/json
+      responses: {}
+      summary: Sign up a new user
+      tags:
+      - authentication
+  /validateotp:
+    post:
+      consumes:
+      - application/json
+      description: Validate OTP for login
+      parameters:
+      - description: User OTP for login
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/models.ValidateOtp'
+      produces:
+      - application/json
+      responses: {}
+      summary: Validate OTP for login
+      tags:
+      - Authentication
+swagger: "2.0"
