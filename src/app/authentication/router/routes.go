@@ -14,6 +14,7 @@ func SetupRouter() *gin.Engine {
 	router.POST(constants.SignIn, handlers.SignIn)
 	router.POST(constants.ChangePassword, handlers.AuthMiddleware(), handlers.ChangePasswordHandler)
 
+	router.POST(constants.ValidateOtp, handlers.AuthMiddleware(), handlers.ValidateOtp)
 	return router
 
 }

@@ -16,27 +16,13 @@ func init() {
 	validate = validator.New()
 }
 
-func authMiddleware(c *gin.Context) {
-	// Check authentication
-	// Example: Check for Authorization header and validate token
-	token := c.GetHeader("Authorization")
-	if token == "" {
-		c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
-		return
-	}
-	// Continue to next handler if authenticated
-	c.Next()
-}
-
-// @Summary Sign in user
-// @Description Sign in user with email and password
+// SignIn godoc
+// @Summary Sign in to the system
+// @Description Sign in to the system with user credentials
 // @Tags Authentication
 // @Accept json
 // @Produce json
-// @Param input body models.UserSignIn true "User sign in details"
-// @Success 200 {object} gin.H{"message": "Email and Password verified"}
-// @Failure 400 {object} gin.H{"error": "Bad Request", "validation_errors": "Validation error details"}
-// @Failure 502 {object} gin.H{"error": "Bad Gateway", "validation_errors": "Email or password verification failed"}
+// @Param input body models.UserSignIn true "User credentials for signing in"
 // @Router /signin [post]
 func SignIn(c *gin.Context) {
 
@@ -57,6 +43,11 @@ func SignIn(c *gin.Context) {
 		c.JSON(http.StatusBadGateway, gin.H{"error": constants.ErrEmailOrPasswordVerificationFailed, "validation_errors": err.Error()})
 		return
 	}
-	c.JSON(http.StatusOK, gin.H{"Token": token})
+	if err := service.GenerateOtpService(&userInput); err != nil {
+		c.JSON(http.StatusBadGateway, gin.H{"error": constants.ErrEmailOrPasswordVerificationFailed, "validation_errors": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Successfully singed in", "Token": token})
 
 }
