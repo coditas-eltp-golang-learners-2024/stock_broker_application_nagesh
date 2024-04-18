@@ -9,26 +9,18 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/go-playground/validator/v10"
 )
 
-var validate *validator.Validate
-
-func init() {
-	validate = validator.New()
-}
-
-// SignUp godoc
-// @Summary Sign up a new user
-// @Description Sign up a new user in the system
-// @Tags authentication
+// @Summary Validate OTP for login
+// @Description Validate OTP for login
+// @Tags Authentication
 // @Accept json
 // @Produce json
-// @Param userInput body models.User true "User data to sign up"
-// @Router /signup [post]
-func SignUp(c *gin.Context) {
+// @Param input body models.ValidateOtp true "User OTP for login"
+// @Router /validateotp [post]
+func ValidateOtp(c *gin.Context) {
 
-	var userInput models.User
+	var userInput models.ValidateOtp
 
 	if err := c.ShouldBindJSON(&userInput); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"Error": err.Error()})
@@ -40,10 +32,10 @@ func SignUp(c *gin.Context) {
 		return
 	}
 
-	if err := service.SignUpService(&userInput); err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+	if err := service.ValidateOtpService(userInput); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
-	c.JSON(http.StatusCreated, gin.H{"message": "Customer signed up successfully"})
+	c.JSON(http.StatusOK, gin.H{"message": "OTP validated successfully"})
 }

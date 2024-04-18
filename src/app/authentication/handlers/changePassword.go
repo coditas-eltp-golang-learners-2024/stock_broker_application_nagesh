@@ -12,23 +12,13 @@ import (
 	"github.com/go-playground/validator/v10"
 )
 
-var validate *validator.Validate
-
 func init() {
 	validate = validator.New()
 }
 
-// SignUp godoc
-// @Summary Sign up a new user
-// @Description Sign up a new user in the system
-// @Tags authentication
-// @Accept json
-// @Produce json
-// @Param userInput body models.User true "User data to sign up"
-// @Router /signup [post]
-func SignUp(c *gin.Context) {
+func ChangePasswordHandler(c *gin.Context) {
 
-	var userInput models.User
+	var userInput models.ChangePassword
 
 	if err := c.ShouldBindJSON(&userInput); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"Error": err.Error()})
@@ -40,10 +30,11 @@ func SignUp(c *gin.Context) {
 		return
 	}
 
-	if err := service.SignUpService(&userInput); err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+	result, err := service.ChangePasswordService(&userInput)
+	if err != nil {
+		c.JSON(http.StatusBadGateway, gin.H{"error": constants.ErrEmailOrPasswordVerificationFailed, "validation_errors": err.Error()})
 		return
 	}
+	c.JSON(http.StatusOK, gin.H{"message": result})
 
-	c.JSON(http.StatusCreated, gin.H{"message": "Customer signed up successfully"})
 }

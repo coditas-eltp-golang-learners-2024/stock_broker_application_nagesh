@@ -1,0 +1,158 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a sample API for demonstration purposes.",
+        "title": "Your API Title",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/",
+    "paths": {
+        "/signin": {
+            "post": {
+                "description": "Sign in to the system with user credentials",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Sign in to the system",
+                "parameters": [
+                    {
+                        "description": "User credentials for signing in",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.UserSignIn"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/signup": {
+            "post": {
+                "description": "Sign up a new user in the system",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "authentication"
+                ],
+                "summary": "Sign up a new user",
+                "parameters": [
+                    {
+                        "description": "User data to sign up",
+                        "name": "userInput",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/validateotp": {
+            "post": {
+                "description": "Validate OTP for login",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Validate OTP for login",
+                "parameters": [
+                    {
+                        "description": "User OTP for login",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ValidateOtp"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        }
+    },
+    "definitions": {
+        "models.User": {
+            "type": "object",
+            "required": [
+                "email",
+                "name",
+                "pan_card_number",
+                "password",
+                "phone_number"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "pan_card_number": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string",
+                    "minLength": 5
+                },
+                "phone_number": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.UserSignIn": {
+            "type": "object",
+            "required": [
+                "email",
+                "password"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string",
+                    "minLength": 5
+                }
+            }
+        },
+        "models.ValidateOtp": {
+            "type": "object",
+            "required": [
+                "email",
+                "otp"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "otp": {
+                    "type": "integer"
+                },
+                "otp_exp": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
