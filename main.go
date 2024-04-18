@@ -3,6 +3,7 @@ package main
 import (
 	"Stock_broker_application/docs"
 	"Stock_broker_application/src/app/authentication/router"
+	"Stock_broker_application/src/app/authentication/utils"
 
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
@@ -15,6 +16,8 @@ import (
 // @BasePath /
 
 func main() {
+	logFilePath := "logs.log"
+	utils.InitLogger(logFilePath)
 	router := router.SetupRouter()
 	docs.SwaggerInfo.Schemes = []string{"http", "https"}
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
