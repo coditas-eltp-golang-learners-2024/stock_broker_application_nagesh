@@ -26,24 +26,29 @@ func init() {
 // @Produce json
 // @Param userInput body models.User true "User data to sign up"
 // @Router /signup [post]
-func SignUp(c *gin.Context) {
+func SignUp(signUpService *service.SignUpService) gin.HandlerFunc {
+	return func(c *gin.Context) {
 
-	var userInput models.User
+		var userInput models.User
 
-	if err := c.ShouldBindJSON(&userInput); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"Error": err.Error()})
-		return
+		if err := c.ShouldBindJSON(&userInput); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"Error": err.Error()})
+			c.Abort()
+			return
+		}
+
+		if err := validate.Struct(userInput); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": constants.ErrValidationFailed, "validation_errors": err.Error()})
+			c.Abort()
+			return
+		}
+
+		if err := signUpService.SignUp(&userInput); err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			c.Abort()
+			return
+		}
+
+		c.JSON(http.StatusCreated, gin.H{"message": "Customer signed up successfully"})
 	}
-
-	if err := validate.Struct(userInput); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": constants.ErrValidationFailed, "validation_errors": err.Error()})
-		return
-	}
-
-	if err := service.SignUpService(&userInput); err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
-	}
-
-	c.JSON(http.StatusCreated, gin.H{"message": "Customer signed up successfully"})
 }

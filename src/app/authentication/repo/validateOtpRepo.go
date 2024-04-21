@@ -4,11 +4,21 @@ import (
 	"Stock_broker_application/src/app/authentication/constants"
 	"Stock_broker_application/src/app/authentication/models"
 	"time"
+
+	"gorm.io/gorm"
 )
 
-func ValidateOtp(user models.ValidateOtp) error {
+type ValidateOtpRepository interface {
+	ValidateOtp(user models.ValidateOtp) error
+}
+
+func NewValidateOtpInstance(db *gorm.DB) *UserDBRepo {
+	return &UserDBRepo{db: db}
+}
+
+func (repo *UserDBRepo) ValidateOtp(user models.ValidateOtp) error {
 	var fetchedUser models.ValidateOtp
-	if err := db.Where("email=?", user.Email).First(&fetchedUser).Error; err != nil {
+	if err := repo.db.Where("email=?", user.Email).First(&fetchedUser).Error; err != nil {
 		return err
 	}
 	if fetchedUser.Otp != user.Otp {

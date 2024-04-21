@@ -6,10 +6,20 @@ import (
 	"Stock_broker_application/src/app/authentication/utils"
 )
 
-func ValidateOtpService(user models.ValidateOtp) error {
+type ValidateOtpService struct {
+	ValidateOtpServiceRepository repo.ValidateOtpRepository
+}
+
+func NewValidateOtpService(validateOtpRepository repo.ValidateOtpRepository) *ValidateOtpService {
+	return &ValidateOtpService{
+		ValidateOtpServiceRepository: validateOtpRepository,
+	}
+}
+
+func (service *ValidateOtpService) ValidateOtp(user models.ValidateOtp) error {
 	utils.Logger.Println("INFO: ValidateOtpService function invoked")
 
-	if err := repo.ValidateOtp(user); err != nil {
+	if err := service.ValidateOtpServiceRepository.ValidateOtp(user); err != nil {
 		utils.Logger.Println("ERROR: Error in ValidateOtp function:", err)
 		return err
 	}

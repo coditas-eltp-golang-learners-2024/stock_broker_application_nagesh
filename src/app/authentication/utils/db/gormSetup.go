@@ -1,4 +1,4 @@
-package utils
+package db
 
 import (
 	"gorm.io/driver/mysql"
@@ -6,7 +6,6 @@ import (
 )
 
 func SetupGorm() (*gorm.DB, error) {
-
 	dsn := "nagesh:SecureP@ssw0rd@tcp(localhost:3306)/stock_broker_application?parseTime=true"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {

@@ -7,11 +7,22 @@ import (
 	"Stock_broker_application/src/app/authentication/utils"
 )
 
-func SignUpService(user *models.User) error {
+type SignUpService struct {
+	UserSignUpRepository repo.UserSingUpRepository
+}
+
+func NewSignUpService(userSignUpRepository repo.UserSingUpRepository) *SignUpService {
+	return &SignUpService{
+		UserSignUpRepository: userSignUpRepository,
+	}
+
+}
+
+func (service *SignUpService) SignUp(user *models.User) error {
 
 	utils.Logger.Println("SignUpService function invoked")
 
-	result, err := repo.CheckUserExists(user)
+	result, err := service.UserSignUpRepository.CheckUserExists(user)
 	if err != nil {
 		utils.Logger.Println("Error in CheckUserExists function:", err)
 		return constants.ErrInternalServer
@@ -22,7 +33,7 @@ func SignUpService(user *models.User) error {
 		return constants.ErrUserExists
 	}
 
-	if err := repo.InsertUserIntoDB(user); err != nil {
+	if err := service.UserSignUpRepository.InsertUserIntoDB(user); err != nil {
 		utils.Logger.Println("Error in InsertUserIntoDB function:", err)
 		return constants.ErrInternalServer
 	}

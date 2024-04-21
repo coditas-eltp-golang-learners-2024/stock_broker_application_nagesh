@@ -16,25 +16,32 @@ func init() {
 	validate = validator.New()
 }
 
-func ChangePasswordHandler(c *gin.Context) {
+func ChangePasswordHandler(changePasswordService *service.ChangePasswordService) gin.HandlerFunc {
 
-	var userInput models.ChangePassword
+	return func(c *gin.Context) {
 
-	if err := c.ShouldBindJSON(&userInput); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"Error": err.Error()})
-		return
+		var userInput models.ChangePassword
+
+		if err := c.ShouldBindJSON(&userInput); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"Error": err.Error()})
+			c.Abort()
+			return
+		}
+
+		if err := validate.Struct(userInput); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": constants.ErrValidationFailed, "validation_errors": err.Error()})
+			c.Abort()
+			return
+		}
+
+		result, err := changePasswordService.ChangePassword(&userInput)
+		if err != nil {
+			c.JSON(http.StatusBadGateway, gin.H{"error": constants.ErrEmailOrPasswordVerificationFailed, "validation_errors": err.Error()})
+			c.Abort()
+			return
+		}
+		c.JSON(http.StatusOK, gin.H{"message": result})
+
 	}
-
-	if err := validate.Struct(userInput); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": constants.ErrValidationFailed, "validation_errors": err.Error()})
-		return
-	}
-
-	result, err := service.ChangePasswordService(&userInput)
-	if err != nil {
-		c.JSON(http.StatusBadGateway, gin.H{"error": constants.ErrEmailOrPasswordVerificationFailed, "validation_errors": err.Error()})
-		return
-	}
-	c.JSON(http.StatusOK, gin.H{"message": result})
 
 }
