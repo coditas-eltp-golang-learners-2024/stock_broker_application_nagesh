@@ -1,0 +1,121 @@
+Stock Broker Application2024/04/18 11:12:02 Singin service called
+Stock Broker Application2024/04/18 11:12:02 Signin successful
+Stock Broker Application2024/04/18 11:12:02 Generated Otp Expiry Time: 2024-04-18 06:42:02.449842228 +0000 UTC
+Stock Broker Application2024/04/18 11:12:02 Generated Otp otp 92 user_id &{Rakesh@gmail.com Rakesh@1011}
+Stock Broker Application2024/04/18 11:13:00 INFO: ValidateOtpService function invoked
+Stock Broker Application2024/04/18 11:13:00 INFO: Validation successful
+Stock Broker Application2024/04/18 11:14:00 INFO: ValidateOtpService function invoked
+Stock Broker Application2024/04/18 11:14:00 INFO: Validation successful
+Stock Broker Application2024/04/18 11:14:41 INFO: ValidateOtpService function invoked
+Stock Broker Application2024/04/18 11:14:41 INFO: Validation successful
+Stock Broker Application2024/04/18 11:15:07 Fetching user from database
+Stock Broker Application2024/04/18 11:15:07 Error fetching user from database record not found
+Stock Broker Application2024/04/18 11:15:22 Fetching user from database
+Stock Broker Application2024/04/18 11:15:22 Updating user password in database
+Stock Broker Application2024/04/18 11:15:22 Password Changed Successfully
+Stock Broker Application2024/04/18 11:15:27 Fetching user from database
+Stock Broker Application2024/04/18 11:15:27 Updating user password in database
+Stock Broker Application2024/04/18 11:15:27 Password Changed Successfully
+Stock Broker Application2024/04/18 14:34:00 Singin service called
+Stock Broker Application2024/04/18 14:34:00 Email or password verification failed
+Stock Broker Application2024/04/18 14:34:18 Singin service called
+Stock Broker Application2024/04/18 14:34:18 Signin successful
+Stock Broker Application2024/04/18 14:34:18 Generated Otp Expiry Time: 2024-04-18 10:04:18.338945937 +0000 UTC
+Stock Broker Application2024/04/18 14:34:18 Generated Otp otp 9150 user_id &{Rakesh@gmail.com Rakesh@123}
+Stock Broker Application2024/04/18 15:07:20 Singin service called
+Stock Broker Application2024/04/18 15:07:20 Signin successful
+Stock Broker Application2024/04/18 15:07:20 Generated Otp Expiry Time: 2024-04-18 10:37:20.364972693 +0000 UTC
+Stock Broker Application2024/04/18 15:07:20 Generated Otp otp 8121 user_id &{Rakesh@gmail.com Rakesh@123}
+Stock Broker Application2024/04/18 15:07:27 Singin service called
+Stock Broker Application2024/04/18 15:07:27 Email or password verification failed
+Stock Broker Application2024/04/18 15:07:34 Singin service called
+Stock Broker Application2024/04/18 15:07:34 Signin successful
+Stock Broker Application2024/04/18 15:07:34 Generated Otp Expiry Time: 2024-04-18 10:37:34.129844041 +0000 UTC
+Stock Broker Application2024/04/18 15:07:34 Generated Otp otp 2312 user_id &{Rakesh@gmail.com Rakesh@123}
+Stock Broker Application2024/04/18 16:31:29 Singin service called
+Stock Broker Application2024/04/18 16:31:29 Signin successful
+Stock Broker Application2024/04/18 16:31:29 Generated Otp Expiry Time: 2024-04-18 12:01:29.028800895 +0000 UTC
+Stock Broker Application2024/04/18 16:31:29 Generated Otp otp 5940 user_id &{Rakesh@gmail.com Rakesh@123}
+Stock Broker Application2024/04/19 10:49:20 Sign in service called
+Stock Broker Application2024/04/19 10:49:20 User exists
+Stock Broker Application2024/04/19 10:49:20 Authentication successful
+Stock Broker Application2024/04/19 10:49:27 Sign in service called
+Stock Broker Application2024/04/19 10:49:27 User exists
+Stock Broker Application2024/04/19 10:49:27 Invalid credentials
+Stock Broker Application2024/04/19 10:49:53 Sign in service called
+Stock Broker Application2024/04/19 10:49:53 User exists
+Stock Broker Application2024/04/19 10:49:53 Invalid credentials
+Stock Broker Application2024/04/19 12:08:32 Sign in service called
+Stock Broker Application2024/04/19 12:08:32 User exists
+Stock Broker Application2024/04/19 12:08:32 Authentication successful
+Stock Broker Application2024/04/21 15:50:53 Sign in service called
+Stock Broker Application2024/04/21 15:50:53 User exists
+Stock Broker Application2024/04/21 15:50:53 Authentication successful
+Stock Broker Application2024/04/21 15:50:53 Singin service called
+Stock Broker Application2024/04/21 15:50:53 Signin successful
+Stock Broker Application2024/04/21 15:51:21 INFO: ValidateOtpService function invoked
+Stock Broker Application2024/04/21 15:51:21 ERROR: Error in ValidateOtp function: Otp verification failed
+Stock Broker Application2024/04/21 23:25:29 SignUpService function invoked
+Stock Broker Application2024/04/21 23:25:29 Error in InsertUserIntoDB function: Error 1054 (42S22): Unknown column 'phoneNumber' in 'field list'
+Stock Broker Application2024/04/21 23:25:51 SignUpService function invoked
+Stock Broker Application2024/04/21 23:25:51 Error in InsertUserIntoDB function: Error 1054 (42S22): Unknown column 'phoneNumber' in 'field list'
+Stock Broker Application2024/04/21 23:28:35 SignUpService function invoked
+Stock Broker Application2024/04/21 23:28:35 Successfully inserted user into DB
+Stock Broker Application2024/04/21 23:29:10 Sign in service called
+Stock Broker Application2024/04/21 23:29:10 User exists
+Stock Broker Application2024/04/21 23:29:10 Invalid credentials
+Stock Broker Application2024/04/21 23:29:21 Sign in service called
+Stock Broker Application2024/04/21 23:29:21 User exists
+Stock Broker Application2024/04/21 23:29:21 Authentication successful
+Stock Broker Application2024/04/21 23:29:21 Singin service called
+Stock Broker Application2024/04/21 23:29:21 Signin successful
+Stock Broker Application2024/04/21 23:40:41 Fetching user from database
+Stock Broker Application2024/04/21 23:40:41 Updating user password in database
+Stock Broker Application2024/04/21 23:40:41 Password Changed Successfully
+Stock Broker Application2024/04/21 23:41:32 Sign in service called
+Stock Broker Application2024/04/21 23:41:32 User exists
+Stock Broker Application2024/04/21 23:41:32 Invalid credentials
+Stock Broker Application2024/04/21 23:41:41 Sign in service called
+Stock Broker Application2024/04/21 23:41:41 User exists
+Stock Broker Application2024/04/21 23:41:41 Authentication successful
+Stock Broker Application2024/04/21 23:41:41 Singin service called
+Stock Broker Application2024/04/21 23:41:41 Signin successful
+Stock Broker Application2024/04/21 23:44:15 Sign in service called
+Stock Broker Application2024/04/21 23:44:15 User exists
+Stock Broker Application2024/04/21 23:44:15 Authentication successful
+Stock Broker Application2024/04/21 23:44:15 Singin service called
+Stock Broker Application2024/04/21 23:44:15 Signin successful
+Stock Broker Application2024/04/21 23:59:02 Sign in service called
+Stock Broker Application2024/04/21 23:59:02 User exists
+Stock Broker Application2024/04/21 23:59:02 Authentication successful
+Stock Broker Application2024/04/21 23:59:02 Singin service called
+Stock Broker Application2024/04/21 23:59:02 Signin successful
+Stock Broker Application2024/04/22 00:00:40 Sign in service called
+Stock Broker Application2024/04/22 00:00:40 User exists
+Stock Broker Application2024/04/22 00:00:40 Authentication successful
+Stock Broker Application2024/04/22 00:00:40 Singin service called
+Stock Broker Application2024/04/22 00:00:40 Signin successful
+Stock Broker Application2024/04/22 00:01:14 Sign in service called
+Stock Broker Application2024/04/22 00:01:14 User exists
+Stock Broker Application2024/04/22 00:01:14 Authentication successful
+Stock Broker Application2024/04/22 00:01:14 Singin service called
+Stock Broker Application2024/04/22 00:01:14 Signin successful
+Stock Broker Application2024/04/22 00:02:55 Sign in service called
+Stock Broker Application2024/04/22 00:02:55 User exists
+Stock Broker Application2024/04/22 00:02:55 Authentication successful
+Stock Broker Application2024/04/22 00:02:55 Singin service called
+Stock Broker Application2024/04/22 00:02:55 Signin successful
+Stock Broker Application2024/04/22 00:03:42 Sign in service called
+Stock Broker Application2024/04/22 00:03:42 User exists
+Stock Broker Application2024/04/22 00:03:42 Authentication successful
+Stock Broker Application2024/04/22 00:03:42 Singin service called
+Stock Broker Application2024/04/22 00:03:42 Signin successful
+Stock Broker Application2024/04/22 00:03:42 Generated Otp Expiry Time: 2024-04-21 19:33:42.647432232 +0000 UTC
+Stock Broker Application2024/04/22 00:03:42 Generated Otp otp 4167 user_id &{Akash@gmail.com Akash@321}
+Stock Broker Application2024/04/22 11:40:42 Sign in service called
+Stock Broker Application2024/04/22 11:40:42 User exists
+Stock Broker Application2024/04/22 11:40:42 Authentication successful
+Stock Broker Application2024/04/22 11:40:42 Singin service called
+Stock Broker Application2024/04/22 11:40:42 Signin successful
+Stock Broker Application2024/04/22 11:40:42 Generated Otp Expiry Time: 2024-04-22 07:10:42.742531287 +0000 UTC
+Stock Broker Application2024/04/22 11:40:42 Generated Otp otp 2163 user_id &{Akash@gmail.com Akash@321}
