@@ -26,8 +26,12 @@ func SetupRouter(db *gorm.DB) *gin.Engine {
 	router.POST(constants.ChangePassword, handlers.AuthMiddleware(), handlers.ChangePasswordHandler(changePasswordService))
 
 	userValidateOtpRepo := repo.NewValidateOtpInstance(db)
-	userValidateOtpRepository := service.NewValidateOtpService(userValidateOtpRepo)
-	router.POST(constants.ValidateOtp, handlers.AuthMiddleware(), handlers.ValidateOtp(userValidateOtpRepository))
+	userValidateOtpService := service.NewValidateOtpService(userValidateOtpRepo)
+	router.POST(constants.ValidateOtp, handlers.AuthMiddleware(), handlers.ValidateOtp(userValidateOtpService))
+
+	userForgotPasswordRepo := repo.NewForgetPasswordInstance(db)
+	userForgotPasswordService := service.NewForgetPasswordService(userForgotPasswordRepo)
+	router.POST(constants.ForgotPassword, handlers.AuthMiddleware(), handlers.ForgotPasswordHandler(*userForgotPasswordService))
 
 	return router
 

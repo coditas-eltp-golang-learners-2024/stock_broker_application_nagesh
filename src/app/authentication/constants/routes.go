@@ -5,4 +5,5 @@ const (
 	SignIn         = "/signin"
 	ChangePassword = "/changepassword"
 	ValidateOtp    = "/validateotp"
+	ForgotPassword = "/forgotpassword"
 )

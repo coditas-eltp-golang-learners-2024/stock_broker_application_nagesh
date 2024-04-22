@@ -112,3 +112,10 @@ Stock Broker Application2024/04/22 00:03:42 Singin service called
 Stock Broker Application2024/04/22 00:03:42 Signin successful
 Stock Broker Application2024/04/22 00:03:42 Generated Otp Expiry Time: 2024-04-21 19:33:42.647432232 +0000 UTC
 Stock Broker Application2024/04/22 00:03:42 Generated Otp otp 4167 user_id &{Akash@gmail.com Akash@321}
+Stock Broker Application2024/04/22 11:40:42 Sign in service called
+Stock Broker Application2024/04/22 11:40:42 User exists
+Stock Broker Application2024/04/22 11:40:42 Authentication successful
+Stock Broker Application2024/04/22 11:40:42 Singin service called
+Stock Broker Application2024/04/22 11:40:42 Signin successful
+Stock Broker Application2024/04/22 11:40:42 Generated Otp Expiry Time: 2024-04-22 07:10:42.742531287 +0000 UTC
+Stock Broker Application2024/04/22 11:40:42 Generated Otp otp 2163 user_id &{Akash@gmail.com Akash@321}

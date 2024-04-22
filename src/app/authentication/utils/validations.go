@@ -3,6 +3,7 @@ package utils
 import (
 	"Stock_broker_application/src/app/authentication/models"
 	"strings"
+	"unicode"
 
 	"github.com/go-playground/validator"
 )
@@ -48,4 +49,38 @@ func ValidateCredentials(creds models.UserSignIn) error {
 	}
 
 	return nil // No validation error
+}
+
+func ValidateForgotPassword(forgotPassword models.ForgotPassword) error {
+	validate := validator.New()
+
+	validate.RegisterValidation("passwordValidation", func(fl validator.FieldLevel) bool {
+		password := fl.Field().String()
+
+		hasUpper := false
+		hasDigit := false
+		hasSpecial := false
+
+		// Iterate over each character in the password
+		for _, char := range password {
+			switch {
+			case unicode.IsUpper(char):
+				hasUpper = true
+			case unicode.IsDigit(char):
+				hasDigit = true
+			case !unicode.IsLetter(char) && !unicode.IsDigit(char):
+				hasSpecial = true
+			}
+		}
+
+		// Check if all conditions are met
+		return hasUpper && hasDigit && hasSpecial
+	})
+
+	err := validate.Struct(forgotPassword)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
